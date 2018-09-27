@@ -1,0 +1,26 @@
+<style lang="less">
+
+</style>
+<template>
+  <view>
+    我的信息
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import { connect } from 'wepy-redux'
+
+  @connect({})
+  export default class Index extends wepy.page {
+    components = {}
+
+    data = {}
+
+    computed = {}
+
+    methods = {}
+
+    onLoad() {}
+  }
+</script>

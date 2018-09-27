@@ -2,8 +2,8 @@
 
 </style>
 <template>
-  <view class="container">
-    hello
+  <view>
+    组局信息
   </view>
 </template>
 

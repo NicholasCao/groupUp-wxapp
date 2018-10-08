@@ -1,13 +1,29 @@
 <style lang="less">
-
+  #header{
+    background: #fff;
+    position: fixed;
+    width: 100%;
+  }
 </style>
 <template>
-  <view>
-
+  <view id="header" style="top:{{statusBarHeight}}px">
+    <view>
+      {{backbutton}}
+    </view>
   </view>
 </template>
 <script>
   import wepy from 'wepy'
   export default class Header extends wepy.component {
+    props = {
+      statusBarHeight: {
+        type: Number,
+        default: 'null'
+      }
+    }
+
+    data = {
+      backbutton: '<'
+    }
   }
 </script>

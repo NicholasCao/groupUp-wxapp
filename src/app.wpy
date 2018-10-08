@@ -12,6 +12,8 @@ import configStore from './store'
 const store = configStore()
 setStore(store)
 
+import { SET_HEIGHT, SET_STATUSBARHEIGHT } from './store/types'
+
 export default class extends wepy.app {
   config = {
     pages: [
@@ -20,6 +22,7 @@ export default class extends wepy.app {
       'pages/me'
     ],
     window: {
+      navigationStyle: 'custom',
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
@@ -56,7 +59,9 @@ export default class extends wepy.app {
     wx.getSystemInfo({
       success(res) {
         console.log(res)
-        // store.dispatch({type: SET_HEIGHT,payload: res.windowHeight/res.windowWidth*750})
+        // statusBarHeight
+        store.dispatch({type: SET_HEIGHT, payload: res.windowHeight / res.windowWidth * 750})
+        store.dispatch({type: SET_STATUSBARHEIGHT, payload: res.statusBarHeight})
       }
     })
   }

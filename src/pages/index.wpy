@@ -3,7 +3,10 @@
 </style>
 <template>
   <view>
-    组局信息
+    <!-- <header :statusBarHeight.sync="statusBarHeight"/> -->
+    <view style="padding-top:{{statusBarHeight+50}}px">
+      组局信息
+    </view>
   </view>
 </template>
 
@@ -13,14 +16,20 @@
   // import Panel from '@/components/panel' // alias example
   // import List from '../components/list' // aliasFields example
   // import Toast from 'wepy-com-toast'
+  import Header from '../components/header'
   import testMixin from '../mixins/test'
 
-  @connect({})
+  @connect({
+    height: state => state.util.height,
+    statusBarHeight: state => state.util.statusBarHeight
+  })
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: 'test'
     }
-    components = {}
+    components = {
+      header: Header
+    }
 
     mixins = [testMixin]
 
@@ -33,7 +42,7 @@
     events = {}
 
     onLoad() {
-      // console.log(this.$parent.globalData)
+      // console.log(this.statusBarHeight)
     }
   }
 </script>

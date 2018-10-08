@@ -1,1 +1,3 @@
-export * from './counter'
+export const SET_HEIGHT = 'SET_HEIGHT'
+
+export const SET_STATUSBARHEIGHT = 'SET_STATUSBARHEIGHT'

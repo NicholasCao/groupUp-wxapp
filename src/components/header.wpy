@@ -1,13 +1,50 @@
 <style lang="less">
-
+#header{
+  background-color: #333;
+  color: #fff;
+  height: 170rpx;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1rpx 5rpx 5rpx #888;
+  #title{
+    font-size: 40rpx;
+    align-self: flex-start;
+    position: relative;
+    top: 18rpx;
+    left: 20rpx;
+  }
+  #week{
+    font-size: 35rpx;
+    position: relative;
+    top: 25rpx;
+  }
+}
 </style>
 <template>
-  <view class="">
+  <view>
+    <view id="header">
+      <text id="title">深大课表</text>
+      <text id="week">第{{week}}周</text>
+    </view>
+    <nav></nav>
   </view>
 </template>
 <script>
   import wepy from 'wepy'
 
-  export default class Panel extends wepy.component {
+  import Nav from '@/components/nav' 
+  
+  export default class Header extends wepy.component {
+    props = {
+      week: {
+        type: Number,
+        default: 'null'
+      },
+    }
+    components = {
+      nav: Nav
+    };
   }
 </script>

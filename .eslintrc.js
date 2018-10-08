@@ -1,5 +1,4 @@
 module.exports = {
-  globals: { wx: true },
   root: true,
   parser: 'babel-eslint',
   parserOptions: {

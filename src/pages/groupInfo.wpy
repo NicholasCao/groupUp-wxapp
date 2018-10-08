@@ -1,0 +1,33 @@
+<style lang="less">
+
+</style>
+<template>
+  <view>
+    局Info
+
+    <button @tap="back">返回</button>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import { connect } from 'wepy-redux'
+
+  @connect({})
+  export default class Index extends wepy.page {
+    components = {}
+
+    data = {}
+
+    computed = {}
+
+    methods = {
+      back() {
+        wx.navigateBack({
+        })
+      }
+    }
+
+    onLoad() {}
+  }
+</script>

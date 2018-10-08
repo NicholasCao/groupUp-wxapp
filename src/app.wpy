@@ -19,7 +19,8 @@ export default class extends wepy.app {
     pages: [
       'pages/index',
       'pages/myGroup',
-      'pages/me'
+      'pages/me',
+      'pages/groupInfo'
     ],
     window: {
       navigationStyle: 'custom',

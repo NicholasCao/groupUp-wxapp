@@ -1,4 +1,4 @@
-import { ASYNC_INCREMENT } from '../types/counter'
+import { ASYNC_INCREMENT } from '../types'
 import { createAction } from 'redux-actions'
 
 export const asyncInc = createAction(ASYNC_INCREMENT, () => {

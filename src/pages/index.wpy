@@ -1,11 +1,68 @@
 <style lang="less">
-
+  .groupInfo{
+    padding: 15rpx 10rpx 15rpx 25rpx;
+    border: 2rpx #333 solid;
+    border-radius: 7rpx;
+    display: flex;
+    flex-direction: column;
+    .groupHeader{
+      display: flex;
+      flex-direction: row;
+      // justify-content: center;
+      align-items: center;
+      .groupName{
+        font-size: 40rpx;
+      }
+      .groupMember{
+        font-size: 28rpx;
+        margin-left: auto;
+        align-self: flex-end;
+        text{
+          padding: 0 15rpx;
+        }
+      }
+    }
+    .groupContent{
+      display: flex;
+      flex-direction: column;
+      // height: 150rpx;
+      padding-top: 20rpx;
+      .groupDesc{
+        font-size: 35rpx;
+        padding-right: 15rpx;
+      }
+      .groupCaptain{
+        font-size: 28rpx;
+        // margin-left: auto;
+        align-self: flex-end;
+        padding-right: 10rpx;
+      }
+    }
+  }
 </style>
 <template>
   <view>
     <!-- <header :statusBarHeight.sync="statusBarHeight"/> -->
     <view style="padding-top:{{statusBarHeight+50}}px">
-      组局信息
+      <view class="groupInfo" @tap="showInfo">
+        <view class="groupHeader">
+          <view class="groupName">
+            约球呀
+          </view>
+          <view class="groupMember">
+            <text>目标人数：6</text>
+            <text>已有：3</text>
+          </view>
+         </view>
+        <view class="groupContent">
+          <view class="groupDesc">
+            这里是简介&&描述:balabala
+          </view>
+          <view class="groupCaptain">
+            局长：Nicholas
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -37,7 +94,13 @@
 
     computed = {}
 
-    methods = {}
+    methods = {
+      showInfo() {
+        wx.navigateTo({
+          url: 'groupInfo'
+        })
+      }
+    }
 
     events = {}
 

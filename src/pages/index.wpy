@@ -32,6 +32,8 @@
 
     events = {}
 
-    onLoad() {}
+    onLoad() {
+      // console.log(this.$parent.globalData)
+    }
   }
 </script>

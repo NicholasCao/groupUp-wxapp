@@ -3,7 +3,11 @@
 </style>
 <template>
   <view>
-    我的信息
+     <view class="header">
+      <view class="title">
+        <text>个人信息</text>
+      </view>
+    </view>
   </view>
 </template>
 

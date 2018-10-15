@@ -1,68 +1,100 @@
 <style lang="less">
   .groupInfo{
-    padding: 15rpx 10rpx 15rpx 25rpx;
-    border: 2rpx #333 solid;
-    border-radius: 7rpx;
+    padding: 40rpx 46rpx 44rpx 40rpx;
+    margin: 20rpx;
+    border: 1rpx #fff solid;
+    border-radius: 10rpx;
     display: flex;
     flex-direction: column;
-    .groupHeader{
-      display: flex;
-      flex-direction: row;
-      // justify-content: center;
-      align-items: center;
-      .groupName{
-        font-size: 40rpx;
-      }
-      .groupMember{
-        font-size: 28rpx;
-        margin-left: auto;
-        align-self: flex-end;
-        text{
-          padding: 0 15rpx;
-        }
-      }
+    box-shadow: 0 0 20rpx rgba(110,121,177,0.2);
+    .groupName{
+      font-size: 32rpx;
+      color: #333;
+      margin-bottom: 20rpx;
     }
     .groupContent{
       display: flex;
-      flex-direction: column;
-      // height: 150rpx;
-      padding-top: 20rpx;
+       font-size: 28rpx;
       .groupDesc{
-        font-size: 35rpx;
-        padding-right: 15rpx;
+        color: #888;
       }
-      .groupCaptain{
-        font-size: 28rpx;
-        // margin-left: auto;
-        align-self: flex-end;
-        padding-right: 10rpx;
+      .groupMember{
+        margin-left: auto;
+        text{
+          color: #7483DA;
+        }
       }
+    }
+  }
+  .header{
+    background: #8998E5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40rpx;
+    .title{
+      color: #fff;
+      padding-top: 66rpx;
+      padding-bottom: 28rpx;
+      font-size: 35rpx;
+    }
+    .search-box{
+      padding: 5rpx 0 16rpx;
+        input{
+          background: #ADB8F0;
+          color: #FEFEFE;
+          font-size: 26rpx;
+          height: 56rpx;
+          width: 636rpx;
+          border-radius: 14px;
+          border: 1px solid #9DAAEC;
+          padding-left: 64rpx;
+        }
+        .inputPlaceholder{
+          color: #FEFEFE;
+        }
+    }
+  }
+  .add-button{
+    position: fixed;
+    right: 24rpx;
+    bottom: 18rpx;
+    image{
+      width: 61px;
+      height: 65px;
     }
   }
 </style>
 <template>
   <view>
     <!-- <header :statusBarHeight.sync="statusBarHeight"/> -->
-    <view style="padding-top:{{statusBarHeight+50}}px">
-      <view class="groupInfo" @tap="showInfo">
-        <view class="groupHeader">
+    <view class="header">
+      <view class="title">
+        <text>首页</text>
+      </view>
+      <view class="search-box">
+        <input placeholder="输入关键词搜索" placeholder-class="inputPlaceholder"/>
+      </view>
+    </view>
+    <view class="groups-box">
+      <repeat for="{{groups}}" key="index" index="index" item="group">
+        <view class="groupInfo" @tap="showInfo">
           <view class="groupName">
-            约球呀
+            {{group.name}}
           </view>
-          <view class="groupMember">
-            <text>目标人数：6</text>
-            <text>已有：3</text>
-          </view>
-         </view>
-        <view class="groupContent">
-          <view class="groupDesc">
-            这里是简介&&描述:balabala
-          </view>
-          <view class="groupCaptain">
-            局长：Nicholas
+          <view class="groupContent">
+            <view class="groupDesc">
+              {{group.desc}}
+            </view>
+            <view class="groupMember">
+              <text>{{group.memberNumber}}/{{group.memberMaxNumber}}人</text>
+            </view>
           </view>
         </view>
-      </view>
+      </repeat>
+    </view>
+    <view class="add-button">
+      <image src="../assets/add.png"/>
     </view>
   </view>
 </template>
@@ -90,7 +122,31 @@
 
     mixins = [testMixin]
 
-    data = {}
+    data = {
+      groups: [
+        {
+          name: '云南八日游',
+          desc: '研究生毕业，女。想一起去毕业旅行...',
+          memberNumber: 9,
+          memberMaxNumber: 10
+        }, {
+          name: '明天约球',
+          desc: '明天下午2点南体约球。',
+          memberNumber: 10,
+          memberMaxNumber: 12
+        }, {
+          name: '挑战杯组队',
+          desc: '智能盆栽方向，技术思路非常简单易...',
+          memberNumber: 10,
+          memberMaxNumber: 12
+        }, {
+          name: '海淘拼单',
+          desc: '生活就像海淘拼单只有意志坚强的人...',
+          memberNumber: 10,
+          memberMaxNumber: 25
+        }
+      ]
+    }
 
     computed = {}
 

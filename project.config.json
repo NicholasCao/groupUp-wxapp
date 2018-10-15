@@ -11,5 +11,31 @@
 	"appid": "touristappid",
 	"projectname": "group-up",
 	"miniprogramRoot": "dist/",
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "myGroup",
+					"pathName": "pages/myGroup"
+				}
+			]
+		}
+	}
 }

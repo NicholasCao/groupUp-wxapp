@@ -1,9 +1,44 @@
 <style lang="less">
-
+  .header{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30rpx;
+    box-shadow: 0 0 20rpx rgba(110,121,177,0.1);
+     .title{
+      color: #181818;
+      padding-top: 66rpx;
+      padding-bottom: 56rpx;
+      font-size: 35rpx;
+    }
+    .tab-box{
+      display: flex;
+      justify-content: space-around;
+      width: 750rpx;
+      text{
+        font-size: 28rpx;
+        color: #888;
+        padding: 0 10rpx 24rpx 10rpx;
+      }
+      .active{
+        border-bottom: 2px solid #5F72D2;
+      }
+    }
+  }
 </style>
 <template>
   <view>
-    我的局
+    <view class="header">
+      <view class="title">
+        <text>我的局</text>
+      </view>
+      <view class="tab-box">
+        <text class="active">发布的局</text>
+        <text>加入的局</text>
+        <text>退出的局</text>
+      </view>
+    </view>
   </view>
 </template>
 

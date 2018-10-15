@@ -62,12 +62,12 @@
         margin-left: auto;
         font-size: 25rpx;
         color: #FEFEFE;
-        .unpublish{
+        .purple-button{
           background: #98A5E9;
           border-radius: 26rpx;
           padding: 13rpx 25rpx;
         }
-        .reedit{
+        .yellow-button{
           background: #FFCC33;
           border-radius: 26rpx;
           padding: 13rpx 25rpx;
@@ -100,8 +100,26 @@
               <view>已有人数<text>{{group.memberNumber}}<text class="font">人</text></text></view>
             </view>
             <view class="button-box">
-              <view class="unpublish" wx:if="{{group.status=='published'}}">撤销发布</view>
-              <view class="reedit" wx:if="{{group.status=='unpublished'}}">重新编辑</view>
+              <view class="purple-button" wx:if="{{group.status=='published'}}">撤销发布</view>
+              <view class="yellow-button" wx:if="{{group.status=='unpublished'}}">重新编辑</view>
+            </view>
+          </view>
+        </view>
+      </repeat>
+    </view>
+    <view class="groups-box" wx:if="{{tabIndex==2}}">
+      <repeat for="{{myGroups}}" key="index" index="index" item="group">
+        <view class="groupInfo" wx:if="{{group.status=='added'}}">
+          <view class="groupName">
+            {{group.name}}
+          </view>
+          <view class="groupContent">
+            <view class="groupMember">
+              <view>目标人数<text>{{group.memberMaxNumber}}<text class="font">人</text></text></view>
+              <view>已有人数<text>{{group.memberNumber}}<text class="font">人</text></text></view>
+            </view>
+            <view class="button-box">
+              <view class="purple-button">退出此局</view>
             </view>
           </view>
         </view>

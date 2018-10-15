@@ -6,15 +6,15 @@
     border-radius: 10rpx;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 20rpx rgba(110,121,177,0.2);
+    box-shadow: 0 4rpx 20rpx rgba(110,121,177,0.2);
     .groupName{
       font-size: 32rpx;
-      color: #333;
+      color: #353535;
       margin-bottom: 20rpx;
     }
     .groupContent{
       display: flex;
-       font-size: 28rpx;
+      font-size: 28rpx;
       .groupDesc{
         color: #888;
       }
@@ -32,23 +32,30 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 40rpx;
+    box-shadow: 0 5rpx 10rpx rgba(74,80,111,0.1);
     .title{
       color: #fff;
       padding-top: 66rpx;
-      padding-bottom: 28rpx;
+      padding-bottom: 20rpx;
       font-size: 35rpx;
     }
     .search-box{
-      padding: 5rpx 0 16rpx;
+      padding: 13rpx 0 16rpx;
+      background: linear-gradient(#8998E5, #9FA7E9);;
+      width: 750rpx;
         input{
           background: #ADB8F0;
+          // linear-gradient(#ADB8F0,#9DAAEC);
           color: #FEFEFE;
           font-size: 26rpx;
           height: 56rpx;
           width: 636rpx;
           border-radius: 14px;
-          border: 1px solid #9DAAEC;
+          border: 1px solid transparent;
+          border-bottom: 1px solid #9DAAEC;
           padding-left: 64rpx;
+          position: relative;
+          left: 32rpx;
         }
         .inputPlaceholder{
           color: #FEFEFE;
@@ -123,29 +130,27 @@
     mixins = [testMixin]
 
     data = {
-      groups: [
-        {
-          name: '云南八日游',
-          desc: '研究生毕业，女。想一起去毕业旅行...',
-          memberNumber: 9,
-          memberMaxNumber: 10
-        }, {
-          name: '明天约球',
-          desc: '明天下午2点南体约球。',
-          memberNumber: 10,
-          memberMaxNumber: 12
-        }, {
-          name: '挑战杯组队',
-          desc: '智能盆栽方向，技术思路非常简单易...',
-          memberNumber: 10,
-          memberMaxNumber: 12
-        }, {
-          name: '海淘拼单',
-          desc: '生活就像海淘拼单只有意志坚强的人...',
-          memberNumber: 10,
-          memberMaxNumber: 25
-        }
-      ]
+      groups: [{
+        name: '云南八日游',
+        desc: '研究生毕业，女。想一起去毕业旅行...',
+        memberNumber: 9,
+        memberMaxNumber: 10
+      }, {
+        name: '明天约球',
+        desc: '明天下午2点南体约球。',
+        memberNumber: 10,
+        memberMaxNumber: 12
+      }, {
+        name: '挑战杯组队',
+        desc: '智能盆栽方向，技术思路非常简单易...',
+        memberNumber: 10,
+        memberMaxNumber: 12
+      }, {
+        name: '海淘拼单',
+        desc: '生活就像海淘拼单只有意志坚强的人...',
+        memberNumber: 10,
+        memberMaxNumber: 25
+      }]
     }
 
     computed = {}

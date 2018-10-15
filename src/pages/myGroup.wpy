@@ -26,6 +26,55 @@
       }
     }
   }
+  .groupInfo{
+    padding: 35rpx 46rpx 18rpx 40rpx;
+    margin: 20rpx;
+    border: 1rpx #fff solid;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4rpx 20rpx rgba(110,121,177,0.2);
+    .groupName{
+      font-size: 32rpx;
+      color: #353535;
+      margin-bottom: 20rpx;
+    }
+    .groupContent{
+      display: flex;
+      font-size: 28rpx;
+      flex-direction: row;
+      align-items: flex-start;
+      .groupMember{
+        color: #AAA;
+        view{
+          padding-bottom: 16rpx;
+          text{
+            color: #353535;
+            padding-left: 32rpx;
+          }
+          .font{
+            padding-left: 14rpx;
+          }
+        }
+      }
+      .button-box{
+        align-self: flex-end;
+        margin-left: auto;
+        font-size: 25rpx;
+        color: #FEFEFE;
+        .unpublish{
+          background: #98A5E9;
+          border-radius: 26rpx;
+          padding: 13rpx 25rpx;
+        }
+        .reedit{
+          background: #FFCC33;
+          border-radius: 26rpx;
+          padding: 13rpx 25rpx;
+        }
+      }
+    }
+  }
 </style>
 <template>
   <view>
@@ -34,10 +83,29 @@
         <text>我的局</text>
       </view>
       <view class="tab-box">
-        <text class="active">发布的局</text>
-        <text>加入的局</text>
-        <text>退出的局</text>
+        <text :class="{active:tabIndex==1}" @tap="changeTab(1)">发布的局</text>
+        <text :class="{active:tabIndex==2}" @tap="changeTab(2)">加入的局</text>
+        <text :class="{active:tabIndex==3}" @tap="changeTab(3)">退出的局</text>
       </view>
+    </view>
+    <view class="groups-box" wx:if="{{tabIndex==1}}">
+      <repeat for="{{myGroups}}" key="index" index="index" item="group">
+        <view class="groupInfo" wx:if="{{group.status=='published'||group.status=='unpublished'}}">
+          <view class="groupName">
+            {{group.name}}
+          </view>
+          <view class="groupContent">
+            <view class="groupMember">
+              <view>目标人数<text>{{group.memberMaxNumber}}<text class="font">人</text></text></view>
+              <view>已有人数<text>{{group.memberNumber}}<text class="font">人</text></text></view>
+            </view>
+            <view class="button-box">
+              <view class="unpublish" wx:if="{{group.status=='published'}}">撤销发布</view>
+              <view class="reedit" wx:if="{{group.status=='unpublished'}}">重新编辑</view>
+            </view>
+          </view>
+        </view>
+      </repeat>
     </view>
   </view>
 </template>
@@ -50,11 +118,42 @@
   export default class Index extends wepy.page {
     components = {}
 
-    data = {}
+    data = {
+      tabIndex: 1,
+      myGroups: [{
+        name: '云南八日游',
+        desc: '研究生毕业，女。想一起去毕业旅行...',
+        memberNumber: 9,
+        memberMaxNumber: 10,
+        status: 'published'
+      }, {
+        name: '明天约球',
+        desc: '明天下午2点南体约球。',
+        memberNumber: 10,
+        memberMaxNumber: 12,
+        status: 'unpublished'
+      }, {
+        name: '挑战杯组队',
+        desc: '智能盆栽方向，技术思路非常简单易...',
+        memberNumber: 10,
+        memberMaxNumber: 12,
+        status: 'added'
+      }, {
+        name: '海淘拼单',
+        desc: '生活就像海淘拼单只有意志坚强的人...',
+        memberNumber: 10,
+        memberMaxNumber: 25,
+        status: 'added'
+      }]
+    }
 
     computed = {}
 
-    methods = {}
+    methods = {
+      changeTab(index) {
+        this.tabIndex = index
+      }
+    }
 
     onLoad() {}
   }

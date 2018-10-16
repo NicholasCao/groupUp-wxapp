@@ -23,13 +23,17 @@
     margin: 142rpx 50rpx 0;
     .captain{
       display: flex;
-      margin-bottom: 30rpx;
       align-items: center;
       .avater{
         width: 68rpx;
         height: 68rpx;
-        background: linear-gradient(#F2A5BD, #F8B5C7);
         border-radius: 50%;
+      }
+      .boy{
+        background: linear-gradient(#98A5E9, #B6C2F1);
+      }
+      .girl{
+        background: linear-gradient(#F2A5BD, #F8B5C7);
       }
       .name{
         font-size: 32rpx;
@@ -37,10 +41,21 @@
         color: #353535;
       }
     }
+    .teamStatus-box{
+      padding: 10rpx 42rpx 32rpx 50rpx;
+      width: 750rpx;
+      position: relative;
+      left: -50rpx;
+      border-bottom: 1rpx solid #DBDBDB;
+      .teamStatus{
+        font-size: 29rpx;
+        color: #AAA;
+      }
+    }
     .name{
       color: #353535;
       font-size: 36rpx;
-      margin-bottom: 22rpx;
+      margin: 30rpx 0 22rpx;
     }
     .content{
       color: #535353;
@@ -60,14 +75,6 @@
         text{
           color: #353535;
           margin-left: auto;
-        }
-        .copy-button{
-          font-size: 22rpx;
-          color: #888;
-          padding: 8rpx 10rpx;
-          border: 2rpx solid #D2D2D2;
-          border-radius: 6rpx;
-          margin-left: 20rpx;
         }
         .member-box{
           margin-left: auto;
@@ -89,15 +96,39 @@
     }
     .notice{
       font-size: 26rpx;
-      .noticeTitle{
-        color: #777;
+      .noticeHeader{
+        display: flex;
+        align-items: center;
         margin-bottom: 32rpx;
+        .noticeTitle{
+          color: #777;
+          margin-right: auto;
+        }
       }
       .noticeContent{
         color: #444;
         line-height: 52rpx;
       }
     }
+    .button-box{
+      margin: 82rpx 0 80rpx;
+      display: flex;
+      justify-content: center;
+      .button{
+        color: #FEFEFE;
+        background: linear-gradient(to right, #9DA9E9, #8494E8);
+        padding: 24rpx 80rpx;
+        border-radius: 40rpx;
+      }
+    }
+  }
+  .mini-button{
+    font-size: 22rpx;
+    color: #888;
+    padding: 8rpx 10rpx;
+    border: 2rpx solid #D2D2D2;
+    border-radius: 6rpx;
+    margin-left: 20rpx;
   }
 </style>
 <template>
@@ -112,10 +143,18 @@
     </view>
     <view class="teamInfo-box">
       <view class="captain" wx:if="{{status=='beforeAdd'||status=='added'}}">
-        <view class="avater">
+        <view class="avater {{team.captainSex}}">
         </view>
         <view class="name">
           {{team.captain}}
+        </view>
+      </view>
+      <view class="teamStatus-box" wx:if="{{status=='published'||status=='unpublished'}}">
+        <view class="teamStatus">
+          此局正在首页发布
+        </view>
+        <view class="button-icon">
+
         </view>
       </view>
       <view class="name">
@@ -125,10 +164,10 @@
         {{team.content}}
       </view>
       <view class="detail-box">
-        <view class="detail">
+        <view class="detail" wx:if="{{status=='added'}}">
           <view>局长微信</view>
           <text>{{team.captainWechat}}</text>
-          <view class="copy-button">复制</view>
+          <view class="mini-button" @tap="copy">复制</view>
         </view>
         <view class="detail">
           <view>截止日期</view>
@@ -138,11 +177,11 @@
           <view>目标人数</view>
           <text>{{team.memberMaxNumber}}</text>
         </view>
-        <view class="detail">
+        <view class="detail" style="{{status=='beforeAdd'?'border:none;':''}}">
           <view>已有人数</view>
           <text>{{team.memberNumber}}</text>
         </view>
-        <view class="detail">
+        <view class="detail" wx:if="{{status!='beforeAdd'}}">
           <view>当前成员</view>
           <view class="member-box">
             <repeat for="{{team.members}}" key="index" index="index" item="member">
@@ -152,9 +191,16 @@
           </view>
         </view>
       </view>
-      <view class="notice">
-        <view class="noticeTitle">局长公告</view>
+      <view class="notice" wx:if="{{status!='beforeAdd'}}">
+        <view class="noticeHeader">
+          <view class="noticeTitle">局长公告</view>
+          <view class="mini-button" wx:if="{{status=='published'||status=='unpublished'}}">编辑</view>
+        </view>
         <view class="noticeContent">{{team.notice}}</view>
+      </view>
+      <view class="button-box">
+        <view class="button" wx:if="{{status=='beforeAdd'}}">我要加入</view>
+        <view class="button" wx:if="{{status=='added'}}">退出此局</view>
       </view>
     </view>
   </view>
@@ -170,10 +216,13 @@
 
     data = {
       backButton: '<',
-      status: 'beforeAdd',
+      // status: 'beforeAdd',
+      // status: 'added',
+      status: 'published',
       team: {
         name: '一起去毕业旅行~~',
         captain: 'Elina_Xie',
+        captainSex: 'boy',
         content: '研究生毕业，女，想去毕业旅行，可一起讨论去哪里。国外比较想去：巴厘岛/日本/或者欧洲;国内比较想去: 青海可以跟团，可自由行，希望5月份去，时间比较充裕，6月份时间待定，有没有小伙伴一起？',
         captainWechat: 'wx181631',
         ddl: '2018-04-30',
@@ -187,6 +236,11 @@
     computed = {}
 
     methods = {
+      copy() {
+        wx.setClipboardData({
+          data: this.team.captainWechat
+        })
+      },
       back() {
         wx.navigateBack({
         })

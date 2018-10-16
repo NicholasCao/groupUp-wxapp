@@ -1,2 +1,2 @@
-# groupUp-wxapp
+# teamUp-wxapp
 

@@ -18,9 +18,9 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/index',
-      'pages/myGroup',
+      'pages/myTeam',
       'pages/me',
-      'pages/groupInfo'
+      'pages/teamInfo'
     ],
     window: {
       navigationStyle: 'custom',
@@ -34,12 +34,12 @@ export default class extends wepy.app {
       backgroundColor: '#FEFEFE',
       list: [{
         pagePath: 'pages/index',
-        iconPath: 'assets/groups.png',
-        selectedIconPath: 'assets/groups2.png'
+        iconPath: 'assets/teams.png',
+        selectedIconPath: 'assets/teams2.png'
       }, {
-        pagePath: 'pages/myGroup',
-        iconPath: 'assets/myGroup.png',
-        selectedIconPath: 'assets/myGroup2.png'
+        pagePath: 'pages/myTeam',
+        iconPath: 'assets/myTeam.png',
+        selectedIconPath: 'assets/myTeam2.png'
       }, {
         pagePath: 'pages/me',
         iconPath: 'assets/me.png',

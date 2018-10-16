@@ -9,7 +9,7 @@
 	},
 	"compileType": "miniprogram",
 	"appid": "touristappid",
-	"projectname": "group-up",
+	"projectname": "teamUp",
 	"miniprogramRoot": "dist/",
 	"condition": {
 		"search": {

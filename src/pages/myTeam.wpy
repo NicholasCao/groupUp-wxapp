@@ -26,7 +26,7 @@
       }
     }
   }
-  .groupInfo{
+  .teamInfo{
     padding: 35rpx 46rpx 18rpx 40rpx;
     margin: 20rpx;
     border: 1rpx #fff solid;
@@ -34,17 +34,17 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 4rpx 20rpx rgba(110,121,177,0.2);
-    .groupName{
+    .teamName{
       font-size: 32rpx;
       color: #353535;
       margin-bottom: 20rpx;
     }
-    .groupContent{
+    .teamContent{
       display: flex;
       font-size: 28rpx;
       flex-direction: row;
       align-items: flex-start;
-      .groupMember{
+      .teamMember{
         color: #AAA;
         view{
           padding-bottom: 16rpx;
@@ -88,35 +88,35 @@
         <text :class="{active:tabIndex==3}" @tap="changeTab(3)">退出的局</text>
       </view>
     </view>
-    <view class="groups-box" wx:if="{{tabIndex==1}}">
-      <repeat for="{{myGroups}}" key="index" index="index" item="group">
-        <view class="groupInfo" wx:if="{{group.status=='published'||group.status=='unpublished'}}">
-          <view class="groupName">
-            {{group.name}}
+    <view class="teams-box" wx:if="{{tabIndex==1}}">
+      <repeat for="{{myTeams}}" key="index" index="index" item="team">
+        <view class="teamInfo" wx:if="{{team.status=='published'||team.status=='unpublished'}}">
+          <view class="teamName">
+            {{team.name}}
           </view>
-          <view class="groupContent">
-            <view class="groupMember">
-              <view>目标人数<text>{{group.memberMaxNumber}}<text class="font">人</text></text></view>
-              <view>已有人数<text>{{group.memberNumber}}<text class="font">人</text></text></view>
+          <view class="teamContent">
+            <view class="teamMember">
+              <view>目标人数<text>{{team.memberMaxNumber}}<text class="font">人</text></text></view>
+              <view>已有人数<text>{{team.memberNumber}}<text class="font">人</text></text></view>
             </view>
             <view class="button-box">
-              <view class="purple-button" wx:if="{{group.status=='published'}}">撤销发布</view>
-              <view class="yellow-button" wx:if="{{group.status=='unpublished'}}">重新编辑</view>
+              <view class="purple-button" wx:if="{{team.status=='published'}}">撤销发布</view>
+              <view class="yellow-button" wx:if="{{team.status=='unpublished'}}">重新编辑</view>
             </view>
           </view>
         </view>
       </repeat>
     </view>
-    <view class="groups-box" wx:if="{{tabIndex==2}}">
-      <repeat for="{{myGroups}}" key="index" index="index" item="group">
-        <view class="groupInfo" wx:if="{{group.status=='added'}}">
-          <view class="groupName">
-            {{group.name}}
+    <view class="teams-box" wx:if="{{tabIndex==2}}">
+      <repeat for="{{myTeams}}" key="index" index="index" item="team">
+        <view class="teamInfo" wx:if="{{team.status=='added'}}">
+          <view class="teamName">
+            {{team.name}}
           </view>
-          <view class="groupContent">
-            <view class="groupMember">
-              <view>目标人数<text>{{group.memberMaxNumber}}<text class="font">人</text></text></view>
-              <view>已有人数<text>{{group.memberNumber}}<text class="font">人</text></text></view>
+          <view class="teamContent">
+            <view class="teamMember">
+              <view>目标人数<text>{{team.memberMaxNumber}}<text class="font">人</text></text></view>
+              <view>已有人数<text>{{team.memberNumber}}<text class="font">人</text></text></view>
             </view>
             <view class="button-box">
               <view class="purple-button">退出此局</view>
@@ -138,7 +138,7 @@
 
     data = {
       tabIndex: 1,
-      myGroups: [{
+      myTeams: [{
         name: '云南八日游',
         desc: '研究生毕业，女。想一起去毕业旅行...',
         memberNumber: 9,

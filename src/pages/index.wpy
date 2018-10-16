@@ -1,5 +1,5 @@
 <style lang="less">
-  .groupInfo{
+  .teamInfo{
     padding: 40rpx 46rpx 44rpx 40rpx;
     margin: 20rpx;
     border: 1rpx #fff solid;
@@ -7,18 +7,18 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 4rpx 20rpx rgba(110,121,177,0.2);
-    .groupName{
+    .teamName{
       font-size: 32rpx;
       color: #353535;
       margin-bottom: 20rpx;
     }
-    .groupContent{
+    .teamContent{
       display: flex;
       font-size: 28rpx;
-      .groupDesc{
+      .teamDesc{
         color: #888;
       }
-      .groupMember{
+      .teamMember{
         margin-left: auto;
         text{
           color: #7483DA;
@@ -83,18 +83,18 @@
         <input placeholder="输入关键词搜索" placeholder-class="inputPlaceholder"/>
       </view>
     </view>
-    <view class="groups-box">
-      <repeat for="{{groups}}" key="index" index="index" item="group">
-        <view class="groupInfo" @tap="showInfo">
-          <view class="groupName">
-            {{group.name}}
+    <view class="teams-box">
+      <repeat for="{{teams}}" key="index" index="index" item="team">
+        <view class="teamInfo" @tap="showInfo">
+          <view class="teamName">
+            {{team.name}}
           </view>
-          <view class="groupContent">
-            <view class="groupDesc">
-              {{group.desc}}
+          <view class="teamContent">
+            <view class="teamDesc">
+              {{team.desc}}
             </view>
-            <view class="groupMember">
-              <text>{{group.memberNumber}}/{{group.memberMaxNumber}}人</text>
+            <view class="teamMember">
+              <text>{{team.memberNumber}}/{{team.memberMaxNumber}}人</text>
             </view>
           </view>
         </view>
@@ -130,7 +130,7 @@
     mixins = [testMixin]
 
     data = {
-      groups: [{
+      teams: [{
         name: '云南八日游',
         desc: '研究生毕业，女。想一起去毕业旅行...',
         memberNumber: 9,
@@ -158,7 +158,7 @@
     methods = {
       showInfo() {
         wx.navigateTo({
-          url: 'groupInfo'
+          url: 'teamInfo'
         })
       }
     }

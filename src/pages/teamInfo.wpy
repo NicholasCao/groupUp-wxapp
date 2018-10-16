@@ -61,6 +61,14 @@
           color: #353535;
           margin-left: auto;
         }
+        .copy-button{
+          font-size: 22rpx;
+          color: #888;
+          padding: 8rpx 10rpx;
+          border: 2rpx solid #D2D2D2;
+          border-radius: 6rpx;
+          margin-left: 20rpx;
+        }
         .member-box{
           margin-left: auto;
           display: flex;
@@ -120,6 +128,7 @@
         <view class="detail">
           <view>局长微信</view>
           <text>{{team.captainWechat}}</text>
+          <view class="copy-button">复制</view>
         </view>
         <view class="detail">
           <view>截止日期</view>

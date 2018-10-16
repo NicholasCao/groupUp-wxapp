@@ -52,9 +52,6 @@
             color: #353535;
             padding-left: 32rpx;
           }
-          .font{
-            padding-left: 14rpx;
-          }
         }
       }
       .button-box{
@@ -88,26 +85,27 @@
         <text :class="{active:tabIndex==3}" @tap="changeTab(3)">退出的局</text>
       </view>
     </view>
-    <view class="teams-box" wx:if="{{tabIndex==1}}">
+    <view class="teams-box">
       <repeat for="{{myTeams}}" key="index" index="index" item="team">
-        <view class="teamInfo" wx:if="{{team.status=='published'||team.status=='unpublished'}}">
+        <view class="teamInfo" wx:if="{{((team.status=='published'||team.status=='unpublished')&&tabIndex==1)||(team.status=='added'&&tabIndex==2)}}">
           <view class="teamName">
             {{team.name}}
           </view>
           <view class="teamContent">
             <view class="teamMember">
-              <view>目标人数<text>{{team.memberMaxNumber}}<text class="font">人</text></text></view>
-              <view>已有人数<text>{{team.memberNumber}}<text class="font">人</text></text></view>
+              <view>目标人数<text>{{team.memberMaxNumber+' 人'}}</text></view>
+              <view>已有人数<text>{{team.memberNumber+' 人'}}</text></view>
             </view>
             <view class="button-box">
               <view class="purple-button" wx:if="{{team.status=='published'}}">撤销发布</view>
               <view class="yellow-button" wx:if="{{team.status=='unpublished'}}">重新编辑</view>
+              <view class="purple-button" wx:if="{{team.status=='added'}}">退出此局</view>
             </view>
           </view>
         </view>
       </repeat>
     </view>
-    <view class="teams-box" wx:if="{{tabIndex==2}}">
+    <!-- <view class="teams-box" wx:if="{{tabIndex==2}}">
       <repeat for="{{myTeams}}" key="index" index="index" item="team">
         <view class="teamInfo" wx:if="{{team.status=='added'}}">
           <view class="teamName">
@@ -115,8 +113,8 @@
           </view>
           <view class="teamContent">
             <view class="teamMember">
-              <view>目标人数<text>{{team.memberMaxNumber}}<text class="font">人</text></text></view>
-              <view>已有人数<text>{{team.memberNumber}}<text class="font">人</text></text></view>
+              <view>目标人数<text>{{team.memberMaxNumber+' 人'}}</text></view>
+              <view>已有人数<text>{{team.memberNumber +' 人'}}</text></view>
             </view>
             <view class="button-box">
               <view class="purple-button">退出此局</view>
@@ -124,7 +122,7 @@
           </view>
         </view>
       </repeat>
-    </view>
+    </view> -->
   </view>
 </template>
 

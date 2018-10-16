@@ -6,7 +6,7 @@
   }
 </style>
 <template>
-  <view id="header" style="top:{{statusBarHeight}}px">
+  <view id="header">
     <view>
       {{backbutton}}
     </view>

@@ -63,7 +63,31 @@
         }
         .member-box{
           margin-left: auto;
+          display: flex;
+          view{
+            width: 48rpx;
+            height: 48rpx;
+            border-radius: 50%;
+            margin: 0 6rpx;
+          }
+          .boy{
+            background: linear-gradient(#9CAAED, #9CAAED);
+          }
+          .girl{
+            background: linear-gradient(#F2A5BD, #F8B5C7);
+          }
         }
+      }
+    }
+    .notice{
+      font-size: 26rpx;
+      .noticeTitle{
+        color: #777;
+        margin-bottom: 32rpx;
+      }
+      .noticeContent{
+        color: #444;
+        line-height: 52rpx;
       }
     }
   }
@@ -113,10 +137,15 @@
           <view>当前成员</view>
           <view class="member-box">
             <repeat for="{{team.members}}" key="index" index="index" item="member">
-              {{member}}
+              <view :class="{'boy':member=='boy','girl':member=='girl'}">
+              </view>
             </repeat>
           </view>
         </view>
+      </view>
+      <view class="notice">
+        <view class="noticeTitle">局长公告</view>
+        <view class="noticeContent">{{team.notice}}</view>
       </view>
     </view>
   </view>
@@ -141,7 +170,8 @@
         ddl: '2018-04-30',
         memberNumber: '9 人',
         memberMaxNumber: '10 人',
-        members: ['boy', 'gril', 'boy', 'boy', 'gril', 'boy']
+        members: ['boy', 'girl', 'boy', 'boy', 'girl', 'boy'],
+        notice: '5月1日下午15:00一起出来讨论旅行地点吧，国外比较想去：巴厘岛/日本; 国内比较想去: 青海。'
       }
     }
 

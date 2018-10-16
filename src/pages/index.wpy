@@ -41,7 +41,7 @@
     }
     .search-box{
       padding: 13rpx 0 16rpx;
-      background: linear-gradient(#8998E5, #9FA7E9);;
+      background: linear-gradient(#8998E5, #9FA7E9);
       width: 750rpx;
         input{
           background: #ADB8F0;

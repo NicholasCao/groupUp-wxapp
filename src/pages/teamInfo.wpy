@@ -1,11 +1,124 @@
 <style lang="less">
-
+  .header{
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    padding-top: 66rpx;
+    padding-bottom: 30rpx;
+    position: fixed;
+    top: 0;
+    width: 750rpx;
+    .back{
+      padding-left: 24rpx;
+      position: fixed;
+      left: 24rpx;
+      top: 66rpx;
+    }
+    .title{
+      color: #181818;
+      font-size: 36rpx;
+    }
+  }
+  .teamInfo-box{
+    margin: 142rpx 50rpx 0;
+    .captain{
+      display: flex;
+      margin-bottom: 30rpx;
+      align-items: center;
+      .avater{
+        width: 68rpx;
+        height: 68rpx;
+        background: linear-gradient(#F2A5BD, #F8B5C7);
+        border-radius: 50%;
+      }
+      .name{
+        font-size: 32rpx;
+        margin-left: 24rpx;
+        color: #353535;
+      }
+    }
+    .name{
+      color: #353535;
+      font-size: 36rpx;
+      margin-bottom: 22rpx;
+    }
+    .content{
+      color: #535353;
+      font-size: 26rpx;
+      line-height: 52rpx;
+    }
+    .detail-box{
+      font-size: 26rpx;
+      margin-top: 44rpx;
+      .detail{
+        color: #777;
+        display: flex;
+        align-items: center;
+        border-bottom: 2rpx solid #EEE;
+        padding-bottom: 25rpx;
+        margin-bottom: 25rpx;
+        text{
+          color: #353535;
+          margin-left: auto;
+        }
+        .member-box{
+          margin-left: auto;
+        }
+      }
+    }
+  }
 </style>
 <template>
   <view>
-    局Info
-
-    <button @tap="back">返回</button>
+    <view class="header">
+      <view class="back">
+        <view @tap="back"> {{backButton}} </view>
+      </view>
+      <view class="title">
+        <text>局信息</text>
+      </view>
+    </view>
+    <view class="teamInfo-box">
+      <view class="captain" wx:if="{{status=='beforeAdd'||status=='added'}}">
+        <view class="avater">
+        </view>
+        <view class="name">
+          {{team.captain}}
+        </view>
+      </view>
+      <view class="name">
+        {{team.name}}
+      </view>
+      <view class="content">
+        {{team.content}}
+      </view>
+      <view class="detail-box">
+        <view class="detail">
+          <view>局长微信</view>
+          <text>{{team.captainWechat}}</text>
+        </view>
+        <view class="detail">
+          <view>截止日期</view>
+          <text>{{team.ddl}}</text>
+        </view>
+        <view class="detail">
+          <view>目标人数</view>
+          <text>{{team.memberMaxNumber}}</text>
+        </view>
+        <view class="detail">
+          <view>已有人数</view>
+          <text>{{team.memberNumber}}</text>
+        </view>
+        <view class="detail">
+          <view>当前成员</view>
+          <view class="member-box">
+            <repeat for="{{team.members}}" key="index" index="index" item="member">
+              {{member}}
+            </repeat>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -17,7 +130,20 @@
   export default class Index extends wepy.page {
     components = {}
 
-    data = {}
+    data = {
+      backButton: '<',
+      status: 'beforeAdd',
+      team: {
+        name: '一起去毕业旅行~~',
+        captain: 'Elina_Xie',
+        content: '研究生毕业，女，想去毕业旅行，可一起讨论去哪里。国外比较想去：巴厘岛/日本/或者欧洲;国内比较想去: 青海可以跟团，可自由行，希望5月份去，时间比较充裕，6月份时间待定，有没有小伙伴一起？',
+        captainWechat: 'wx181631',
+        ddl: '2018-04-30',
+        memberNumber: '9 人',
+        memberMaxNumber: '10 人',
+        members: ['boy', 'gril', 'boy', 'boy', 'gril', 'boy']
+      }
+    }
 
     computed = {}
 

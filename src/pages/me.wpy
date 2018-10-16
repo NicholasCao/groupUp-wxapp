@@ -7,7 +7,7 @@
     box-shadow: 0 0 20rpx rgba(110,121,177,0.1);
     position:relative;
     z-index: 1;
-     .title{
+    .title{
       color: #181818;
       padding-top: 66rpx;
       padding-bottom: 30rpx;
@@ -34,7 +34,7 @@
       .avater{
         width: 120rpx;
         height: 120rpx;
-        background-color:#F2A5BD;
+        background: linear-gradient(#F2A5BD, #F8B5C7);
         border-radius: 50%;
       }
       .name{
@@ -69,7 +69,7 @@
 </style>
 <template>
   <view>
-     <view class="header">
+    <view class="header">
       <view class="title">
         <text>个人信息</text>
       </view>

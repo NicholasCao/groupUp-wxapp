@@ -6,7 +6,7 @@
     align-items: center;
     margin-bottom: 30rpx;
     box-shadow: 0 0 20rpx rgba(110,121,177,0.1);
-     .title{
+    .title{
       color: #181818;
       padding-top: 66rpx;
       padding-bottom: 56rpx;

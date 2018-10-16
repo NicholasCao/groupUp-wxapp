@@ -31,9 +31,16 @@
 			"current": 0,
 			"list": [
 				{
+					"id": 0,
+					"name": "myTeam",
+					"pathName": "pages/myTeam",
+					"query": ""
+				},
+				{
 					"id": -1,
-					"name": "myGroup",
-					"pathName": "pages/myGroup"
+					"name": "me",
+					"pathName": "pages/me",
+					"query": ""
 				}
 			]
 		}

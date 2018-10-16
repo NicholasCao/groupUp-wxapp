@@ -68,7 +68,7 @@
           padding: 13rpx 25rpx;
         }
         .yellow-button{
-          background: #FFCC33;
+          background: #FC3;
           border-radius: 26rpx;
           padding: 13rpx 25rpx;
         }

@@ -2,7 +2,7 @@
   .teamInfo{
     padding: 40rpx 46rpx 44rpx 40rpx;
     margin: 20rpx;
-    border: 1rpx #fff solid;
+    // border: 1rpx #fff solid;
     border-radius: 10rpx;
     display: flex;
     flex-direction: column;
@@ -51,8 +51,8 @@
           height: 56rpx;
           width: 636rpx;
           border-radius: 14px;
-          border: 1px solid transparent;
-          border-bottom: 1px solid #9DAAEC;
+          // border: 1px solid transparent;
+          // border-bottom: 1px solid #9DAAEC;
           padding-left: 64rpx;
           position: relative;
           left: 32rpx;

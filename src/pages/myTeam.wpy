@@ -4,8 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30rpx;
     box-shadow: 0 0 20rpx rgba(110,121,177,0.1);
+    position: fixed;
+    top: 0;
     .title{
       color: #181818;
       padding-top: 66rpx;
@@ -26,48 +27,51 @@
       }
     }
   }
-  .teamInfo{
-    padding: 35rpx 46rpx 18rpx 40rpx;
-    margin: 20rpx;
-    border: 1rpx #fff solid;
-    border-radius: 10rpx;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4rpx 20rpx rgba(110,121,177,0.2);
-    .teamName{
-      font-size: 32rpx;
-      color: #353535;
-      margin-bottom: 20rpx;
-    }
-    .teamContent{
+  .teams-box{
+    margin-top: 260rpx;
+    .teamInfo{
+      padding: 35rpx 46rpx 18rpx 40rpx;
+      margin: 20rpx;
+      border: 1rpx #fff solid;
+      border-radius: 10rpx;
       display: flex;
-      font-size: 28rpx;
-      flex-direction: row;
-      align-items: flex-start;
-      .teamMember{
-        color: #AAA;
-        view{
-          padding-bottom: 16rpx;
-          text{
-            color: #353535;
-            padding-left: 32rpx;
+      flex-direction: column;
+      box-shadow: 0 4rpx 20rpx rgba(110,121,177,0.2);
+      .teamName{
+        font-size: 32rpx;
+        color: #353535;
+        margin-bottom: 20rpx;
+      }
+      .teamContent{
+        display: flex;
+        font-size: 28rpx;
+        flex-direction: row;
+        align-items: flex-start;
+        .teamMember{
+          color: #AAA;
+          view{
+            padding-bottom: 16rpx;
+            text{
+              color: #353535;
+              padding-left: 32rpx;
+            }
           }
         }
-      }
-      .button-box{
-        align-self: flex-end;
-        margin-left: auto;
-        font-size: 25rpx;
-        color: #FEFEFE;
-        .purple-button{
-          background: #98A5E9;
-          border-radius: 26rpx;
-          padding: 13rpx 25rpx;
-        }
-        .yellow-button{
-          background: #FC3;
-          border-radius: 26rpx;
-          padding: 13rpx 25rpx;
+        .button-box{
+          align-self: flex-end;
+          margin-left: auto;
+          font-size: 25rpx;
+          color: #FEFEFE;
+          .purple-button{
+            background: #98A5E9;
+            border-radius: 26rpx;
+            padding: 13rpx 25rpx;
+          }
+          .yellow-button{
+            background: #FC3;
+            border-radius: 26rpx;
+            padding: 13rpx 25rpx;
+          }
         }
       }
     }

@@ -1,24 +1,24 @@
 <style lang="less">
-  .header{
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    padding-top: 66rpx;
-    padding-bottom: 30rpx;
-    position: fixed;
-    top: 0;
-    width: 750rpx;
-    .back{
-      padding-left: 24rpx;
-      position: fixed;
-      left: 24rpx;
-      top: 66rpx;
-    }
-    .title{
-      color: #181818;
-      font-size: 36rpx;
-    }
-  }
+  // .header{
+  //   background: #fff;
+  //   display: flex;
+  //   justify-content: center;
+  //   padding-top: 66rpx;
+  //   padding-bottom: 30rpx;
+  //   position: fixed;
+  //   top: 0;
+  //   width: 750rpx;
+  //   .back{
+  //     padding-left: 24rpx;
+  //     position: fixed;
+  //     left: 24rpx;
+  //     top: 66rpx;
+  //   }
+  //   .title{
+  //     color: #181818;
+  //     font-size: 36rpx;
+  //   }
+  // }
   .teamInfo-box{
     margin: 142rpx 50rpx 0;
     .captain{
@@ -133,14 +133,15 @@
 </style>
 <template>
   <view>
-    <view class="header">
+    <header  title="局信息" backButton="true"></header>
+    <!-- <view class="header">
       <view class="back">
         <view @tap="back"> {{backButton}} </view>
       </view>
       <view class="title">
         <text>局信息</text>
       </view>
-    </view>
+    </view> -->
     <view class="teamInfo-box">
       <view class="captain" wx:if="{{status=='beforeAdd'||status=='added'}}">
         <view class="avater {{team.captainSex}}">
@@ -154,7 +155,7 @@
           此局正在首页发布
         </view>
         <view class="button-icon">
-
+          <!-- icon-here -->
         </view>
       </view>
       <view class="name">
@@ -209,10 +210,13 @@
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
+  import Header from '../components/header'
 
   @connect({})
   export default class Index extends wepy.page {
-    components = {}
+    components = {
+      header: Header
+    }
 
     data = {
       backButton: '<',

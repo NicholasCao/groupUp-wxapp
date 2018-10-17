@@ -2,7 +2,6 @@
   .teamInfo{
     padding: 40rpx 46rpx 44rpx 40rpx;
     margin: 20rpx;
-    // border: 1rpx #fff solid;
     border-radius: 10rpx;
     display: flex;
     flex-direction: column;
@@ -120,9 +119,6 @@
     statusBarHeight: state => state.util.statusBarHeight
   })
   export default class Index extends wepy.page {
-    config = {
-      navigationBarTitleText: 'test'
-    }
     components = {
       header: Header
     }

@@ -3,12 +3,41 @@
     background: #fff;
     position: fixed;
     width: 100%;
+    z-index: 1;
+    top: 0;
+    .header{
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      padding-top: 66rpx;
+      padding-bottom: 30rpx;
+      width: 750rpx;
+      // box-shadow: 0 0 20rpx rgba(110,121,177,0.1);
+      .back{
+        padding-left: 24rpx;
+        position: fixed;
+        left: 24rpx;
+        top: 66rpx;
+      }
+      .title{
+        color: #181818;
+        font-size: 36rpx;
+      }
+    }
+    .shadow{
+      box-shadow: 0 6rpx 20rpx rgba(110,121,177,0.1);
+    }
   }
 </style>
 <template>
   <view id="header">
-    <view>
-      {{backbutton}}
+    <view class="header {{shadow?'shadow':''}}">
+      <view class="back" wx:if="{{backButton}}">
+        <view @tap="back"> {{backbutton}} </view>
+      </view>
+      <view class="title">
+        <text>{{title}}</text>
+      </view>
     </view>
   </view>
 </template>
@@ -19,11 +48,25 @@
       statusBarHeight: {
         type: Number,
         default: 'null'
+      },
+      title: {
+        type: String,
+        default: ''
+      },
+      backButton: {
+        type: String,
+        default: null
+      },
+      shadow: {
+        type: String,
+        default: null
       }
     }
 
     data = {
       backbutton: '<'
     }
+
+    onLoad() {}
   }
 </script>

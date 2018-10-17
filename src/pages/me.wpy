@@ -1,19 +1,19 @@
 <style lang="less">
-  .header{
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 0 20rpx rgba(110,121,177,0.1);
-    position:relative;
-    z-index: 1;
-    .title{
-      color: #181818;
-      padding-top: 66rpx;
-      padding-bottom: 30rpx;
-      font-size: 35rpx;
-    }
-  }
+  // .header{
+  //   background: #fff;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   box-shadow: 0 0 20rpx rgba(110,121,177,0.1);
+  //   position:relative;
+  //   z-index: 1;
+  //   .title{
+  //     color: #181818;
+  //     padding-top: 66rpx;
+  //     padding-bottom: 30rpx;
+  //     font-size: 35rpx;
+  //   }
+  // }
   .background{
     position: absolute;
     top: 40rpx; 
@@ -24,7 +24,7 @@
     background: rgba(255,255,255,0.7);
     position:relative;
     z-index: 1;
-    margin: 102rpx 50rpx 0;
+    margin: 240rpx 50rpx 0;
     border-radius: 40rpx;
     padding: 50rpx 50rpx 280rpx 12rpx;
     box-shadow: 0 6rpx 10rpx rgba(152,152,152,0.2);
@@ -69,11 +69,12 @@
 </style>
 <template>
   <view>
-    <view class="header">
+    <!-- <view class="header">
       <view class="title">
         <text>个人信息</text>
       </view>
-    </view>
+    </view> -->
+    <header  title="个人信息" shadow="true"></header>
     <view class="background">
       <image src="../assets/meBackground.png"/>
     </view>
@@ -109,10 +110,13 @@
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
+  import Header from '../components/header'
 
   @connect({})
   export default class Index extends wepy.page {
-    components = {}
+    components = {
+      header: Header
+    }
 
     data = {}
 

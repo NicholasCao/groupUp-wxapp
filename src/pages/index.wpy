@@ -50,8 +50,6 @@
           height: 56rpx;
           width: 636rpx;
           border-radius: 14px;
-          // border: 1px solid transparent;
-          // border-bottom: 1px solid #9DAAEC;
           padding-left: 64rpx;
           position: relative;
           left: 32rpx;

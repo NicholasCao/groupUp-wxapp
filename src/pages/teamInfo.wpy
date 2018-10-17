@@ -42,14 +42,19 @@
       }
     }
     .teamStatus-box{
-      padding: 10rpx 42rpx 32rpx 50rpx;
+      padding: 10rpx 40rpx 30rpx 50rpx;
       width: 750rpx;
       position: relative;
       left: -50rpx;
       border-bottom: 1rpx solid #DBDBDB;
+      display: flex;
+      align-items: center;
       .teamStatus{
         font-size: 29rpx;
         color: #AAA;
+      }
+      .button-icon{
+        margin-left: auto;
       }
     }
     .name{
@@ -133,7 +138,7 @@
 </style>
 <template>
   <view>
-    <header  title="局信息" backButton="true"></header>
+    <header title="局信息" backButton="true"></header>
     <!-- <view class="header">
       <view class="back">
         <view @tap="back"> {{backButton}} </view>
@@ -150,9 +155,17 @@
           {{team.captain}}
         </view>
       </view>
-      <view class="teamStatus-box" wx:if="{{status=='published'||status=='unpublished'}}">
+      <view class="teamStatus-box" wx:if="{{status=='published'}}">
         <view class="teamStatus">
           此局正在首页发布
+        </view>
+        <view class="button-icon">
+          <!-- icon-here -->
+        </view>
+      </view>
+      <view class="teamStatus-box"  wx:if="{{status=='unpublished'}}">
+        <view class="teamStatus">
+          此局已从首页撤下
         </view>
         <view class="button-icon">
           <!-- icon-here -->
@@ -222,7 +235,8 @@
       backButton: '<',
       // status: 'beforeAdd',
       // status: 'added',
-      status: 'published',
+      // status: 'published',
+      status: 'unpublished',
       team: {
         name: '一起去毕业旅行~~',
         captain: 'Elina_Xie',
@@ -244,11 +258,11 @@
         wx.setClipboardData({
           data: this.team.captainWechat
         })
-      },
-      back() {
-        wx.navigateBack({
-        })
       }
+      // back() {
+      //   wx.navigateBack({
+      //   })
+      // }
     }
 
     onLoad() {}

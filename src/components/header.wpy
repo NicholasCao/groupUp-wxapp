@@ -12,9 +12,8 @@
       padding-top: 66rpx;
       padding-bottom: 30rpx;
       width: 750rpx;
-      // box-shadow: 0 0 20rpx rgba(110,121,177,0.1);
       .back{
-        padding-left: 24rpx;
+        // padding-left: 24rpx;
         position: fixed;
         left: 24rpx;
         top: 66rpx;
@@ -65,6 +64,13 @@
 
     data = {
       backbutton: '<'
+    }
+
+    methods = {
+      back() {
+        wx.navigateBack({
+        })
+      }
     }
 
     onLoad() {}

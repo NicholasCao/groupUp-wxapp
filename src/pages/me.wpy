@@ -74,7 +74,7 @@
         <text>个人信息</text>
       </view>
     </view> -->
-    <header  title="个人信息" shadow="true"></header>
+    <header title="个人信息" shadow="true"></header>
     <view class="background">
       <image src="../assets/meBackground.png"/>
     </view>

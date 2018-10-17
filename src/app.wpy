@@ -20,7 +20,8 @@ export default class extends wepy.app {
       'pages/index',
       'pages/myTeam',
       'pages/me',
-      'pages/teamInfo'
+      'pages/teamInfo',
+      'pages/editTeam'
     ],
     window: {
       navigationStyle: 'custom',

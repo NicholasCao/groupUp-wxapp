@@ -98,7 +98,7 @@
       </repeat>
     </view>
     <view class="add-button">
-      <image src="../assets/add.png"/>
+      <image src="../assets/add.png" @tap="addTeam"/>
     </view>
   </view>
 </template>
@@ -153,6 +153,11 @@
       showInfo() {
         wx.navigateTo({
           url: 'teamInfo'
+        })
+      },
+      addTeam() {
+        wx.navigateTo({
+          url: 'editTeam'
         })
       }
     }

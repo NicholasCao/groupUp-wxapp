@@ -68,7 +68,7 @@
 
     methods = {
       back() {
-        wx.navigateBack({
+        wepy.navigateBack({
         })
       }
     }

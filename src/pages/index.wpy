@@ -157,12 +157,12 @@
 
     methods = {
       showInfo() {
-        wx.navigateTo({
+        wepy.navigateTo({
           url: 'teamInfo'
         })
       },
       addTeam() {
-        wx.navigateTo({
+        wepy.navigateTo({
           url: 'editTeam'
         })
       }
@@ -172,6 +172,16 @@
 
     onLoad() {
       // console.log(this.statusBarHeight)
+      // wepy.showModal({
+      //   title: '提示',
+      //   content: `获取用户信息失败`
+      // })
+      // wepy.showToast({
+      //   title: '发送中...',
+      //   icon: 'loading',
+      //   duration: 10000,
+      //   mask: true
+      // })
     }
   }
 </script>

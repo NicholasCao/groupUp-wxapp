@@ -234,9 +234,9 @@
     data = {
       backButton: '<',
       // status: 'beforeAdd',
-      // status: 'added',
+      status: 'added',
       // status: 'published',
-      status: 'unpublished',
+      // status: 'unpublished',
       team: {
         name: '一起去毕业旅行~~',
         captain: 'Elina_Xie',
@@ -255,12 +255,12 @@
 
     methods = {
       copy() {
-        wx.setClipboardData({
+        wepy.setClipboardData({
           data: this.team.captainWechat
         })
       },
       editNotice() {
-        wx.navigateTo({
+        wepy.navigateTo({
           url: 'editTeam?status=editNotice'
         })
       }

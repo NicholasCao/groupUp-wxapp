@@ -208,7 +208,7 @@
       <view class="notice" wx:if="{{status!='beforeAdd'}}">
         <view class="noticeHeader">
           <view class="noticeTitle">局长公告</view>
-          <view class="mini-button" wx:if="{{status=='published'||status=='unpublished'}}">编辑</view>
+          <view class="mini-button" wx:if="{{status=='published'||status=='unpublished'}}" @tap="editNotice">编辑</view>
         </view>
         <view class="noticeContent">{{team.notice}}</view>
       </view>
@@ -258,11 +258,12 @@
         wx.setClipboardData({
           data: this.team.captainWechat
         })
+      },
+      editNotice() {
+        wx.navigateTo({
+          url: 'editTeam?status=editNotice'
+        })
       }
-      // back() {
-      //   wx.navigateBack({
-      //   })
-      // }
     }
 
     onLoad() {}

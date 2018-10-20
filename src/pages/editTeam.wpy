@@ -14,6 +14,7 @@
     }
     .button-icon{
       margin-left: auto;
+      margin-right: 90rpx;
     }
   }
   .edit-box{
@@ -49,14 +50,14 @@
     <header :title.sync="title" backButton="true"></header>
     <view class="editStatus-box">
       <view class="editStatus">
-        编辑局信息
+        {{editStatus}}
       </view>
       <view class="button-icon">
         <!-- icon-here -->
         ok
       </view>
     </view>
-    <view class="edit-box">
+    <view class="edit-box" wx:if="{{status!='editNotice'}}">
       <view class="edit">
         <text class="label">标题</text>
         <input placeholder="请输入标题" placeholder-class="inputPlaceholder"/>
@@ -78,6 +79,11 @@
         <textarea placeholder="请输入简介" placeholder-class="inputPlaceholder"/>
       </view>
     </view>
+     <view class="edit-box" wx:if="{{status=='editNotice'}}">
+      <view class="edit">
+        <textarea placeholder="请输入局公告" placeholder-class="inputPlaceholder"/>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -86,14 +92,19 @@
   import { connect } from 'wepy-redux'
   import Header from '../components/header'
 
-  @connect({})
+  @connect({
+    notice: state => state.team.notice
+  })
+
   export default class Index extends wepy.page {
     components = {
       header: Header
     }
 
     data = {
-      title: '发布局'
+      status: 'newTeam',
+      title: '发布局',
+      editStatus: '编辑局信息'
     }
 
     computed = {}
@@ -101,7 +112,13 @@
     methods = {
     }
 
-    onLoad() {
+    onLoad(option) {
+      // console.log(option.status)
+      // console.log(option.status === 'notice')
+      this.status = option.status
+      this.title = option.status === 'editNotice' ? '局公告' : '发布局'
+      this.editStatus = option.status === 'editNotice' ? '编辑局公告' : '编辑局信息'
+      console.log(this.notice)
     }
   }
 </script>

@@ -1,26 +1,29 @@
 <style lang="less">
-  .teamInfo{
-    padding: 40rpx 46rpx 44rpx 40rpx;
-    margin: 20rpx;
-    border-radius: 10rpx;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4rpx 20rpx rgba(110,121,177,0.2);
-    .teamName{
-      font-size: 32rpx;
-      color: #353535;
-      margin-bottom: 20rpx;
-    }
-    .teamContent{
+  .teams-box{
+    margin-top: 235rpx;
+    .teamInfo{
+      padding: 40rpx 46rpx 44rpx 40rpx;
+      margin: 20rpx;
+      border-radius: 10rpx;
       display: flex;
-      font-size: 28rpx;
-      .teamDesc{
-        color: #888;
+      flex-direction: column;
+      box-shadow: 0 4rpx 20rpx rgba(110,121,177,0.2);
+      .teamName{
+        font-size: 32rpx;
+        color: #353535;
+        margin-bottom: 20rpx;
       }
-      .teamMember{
-        margin-left: auto;
-        text{
-          color: #7483DA;
+      .teamContent{
+        display: flex;
+        font-size: 28rpx;
+        .teamDesc{
+          color: #888;
+        }
+        .teamMember{
+          margin-left: auto;
+          text{
+            color: #7483DA;
+          }
         }
       }
     }
@@ -30,8 +33,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40rpx;
+    // margin-bottom: 40rpx;
     box-shadow: 0 5rpx 10rpx rgba(74,80,111,0.1);
+    position: fixed;
+    top: 0;
+    width: 750rpx;
     .title{
       color: #fff;
       padding-top: 66rpx;
@@ -144,7 +150,7 @@
         desc: '生活就像海淘拼单只有意志坚强的人...',
         memberNumber: 10,
         memberMaxNumber: 25
-      }]
+      }, {}, {}, {}]
     }
 
     computed = {}

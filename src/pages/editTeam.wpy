@@ -52,7 +52,7 @@
       <view class="editStatus">
         {{editStatus}}
       </view>
-      <view class="button-icon">
+      <view class="button-icon" @tap="submit">
         <!-- icon-here -->
         ok
       </view>
@@ -60,28 +60,33 @@
     <view class="edit-box" wx:if="{{status!='editNotice'}}">
       <view class="edit">
         <text class="label">标题</text>
-        <input placeholder="请输入标题" placeholder-class="inputPlaceholder"/>
+        <input placeholder="请输入标题" bindinput="inputTeamInfo(name)" placeholder-class="inputPlaceholder"/>
       </view>
       <view class="edit">
         <text class="label">目标人数</text>
-        <input placeholder="请输入目标人数" placeholder-class="inputPlaceholder"/>
+        <input placeholder="请输入目标人数" bindinput="inputTeamInfo(maxMember)" placeholder-class="inputPlaceholder" type="number"/>
       </view>
       <view class="edit">
         <text class="label">截止日期</text>
-        <input placeholder="请输入截止日期" placeholder-class="inputPlaceholder"/>
+        <input placeholder="请输入截止日期" bindinput="inputTeamInfo(ddl)" placeholder-class="inputPlaceholder"/>
+        <!-- <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+          <view class="picker">
+            当前选择: {{date}}
+          </view>
+        </picker> -->
       </view>
       <view class="edit">
         <text class="label">微信号</text>
-        <input placeholder="请输入您的微信号(仅对局内成员显示)" placeholder-class="inputPlaceholder"/>
+        <input placeholder="请输入您的微信号(仅对局内成员显示)" bindinput="inputTeamInfo(wx)" placeholder-class="inputPlaceholder"/>
       </view>
       <view class="edit">
         <text class="label">简介</text>
-        <textarea placeholder="请输入简介" placeholder-class="inputPlaceholder"/>
+        <textarea placeholder="请输入简介" bindinput="inputTeamInfo(desc)" placeholder-class="inputPlaceholder"/>
       </view>
     </view>
      <view class="edit-box" wx:if="{{status=='editNotice'}}">
       <view class="edit">
-        <textarea placeholder="请输入局公告" placeholder-class="inputPlaceholder"/>
+        <textarea value="{{notice}}" bindinput="inputNotice" placeholder="请输入局公告" placeholder-class="inputPlaceholder"/>
       </view>
     </view>
   </view>
@@ -92,8 +97,12 @@
   import { connect } from 'wepy-redux'
   import Header from '../components/header'
 
+  import { MODIFY_NOTICE } from '../store/types'
+
   @connect({
     notice: state => state.team.notice
+  }, {
+    MODIFY_NOTICE
   })
 
   export default class Index extends wepy.page {
@@ -104,12 +113,31 @@
     data = {
       status: 'newTeam',
       title: '发布局',
-      editStatus: '编辑局信息'
+      editStatus: '编辑局信息',
+      currentTeam: {},
+      currentNotice: ''
     }
 
     computed = {}
 
     methods = {
+      submit() {
+        console.log(this.notice)
+        this.methods.MODIFY_NOTICE({
+          notice: this.currentNotice
+        })
+        console.log(this.notice)
+      },
+      inputTeamInfo(detail, e) {
+        this.currentTeam = {
+          ...this.currentTeam,
+          [detail]: e.detail.value
+        }
+        console.log(this.currentTeam)
+      },
+      inputNotice(e) {
+        this.currentNotice = e.detail.value
+      }
     }
 
     onLoad(option) {
@@ -118,7 +146,6 @@
       this.status = option.status
       this.title = option.status === 'editNotice' ? '局公告' : '发布局'
       this.editStatus = option.status === 'editNotice' ? '编辑局公告' : '编辑局信息'
-      console.log(this.notice)
     }
   }
 </script>

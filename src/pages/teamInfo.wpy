@@ -234,8 +234,8 @@
     data = {
       backButton: '<',
       // status: 'beforeAdd',
-      status: 'added',
-      // status: 'published',
+      // status: 'added',
+      status: 'published',
       // status: 'unpublished',
       team: {
         name: '一起去毕业旅行~~',

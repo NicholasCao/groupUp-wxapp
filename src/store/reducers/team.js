@@ -5,7 +5,7 @@ export default handleActions({
   [ MODIFY_NOTICE ] (state,action) {
     return {
       ...state,
-      notice: action.payload
+      notice: action.payload.notice
     }
   }
 }, {

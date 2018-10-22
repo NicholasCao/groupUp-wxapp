@@ -42,6 +42,13 @@
       .inputPlaceholder{
         color: #888;
       }
+      .ddl{
+        color: #888;
+        font-size: 29rpx;
+        padding: 25rpx 0 25rpx;
+        border-bottom: 2rpx solid #E5E5E5;
+        margin-bottom: 25rpx;
+      }
     }
   }
 </style>
@@ -67,13 +74,14 @@
         <input placeholder="请输入目标人数" bindinput="inputTeamInfo(maxMember)" placeholder-class="inputPlaceholder" type="number"/>
       </view>
       <view class="edit">
-        <text class="label">截止日期</text>
-        <input placeholder="请输入截止日期" bindinput="inputTeamInfo(ddl)" placeholder-class="inputPlaceholder"/>
-        <!-- <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-          <view class="picker">
-            当前选择: {{date}}
-          </view>
-        </picker> -->
+        <!-- <text class="label">截止日期</text>
+        <input placeholder="请输入截止日期" bindinput="inputTeamInfo(ddl)" placeholder-class="inputPlaceholder"/> -->
+        <picker mode="date" value="{{currentTeam.ddl}}" start="{{now}}" bindchange="inputTeamInfo(ddl)">
+          <!-- <view class="picker"> -->
+            <text class="label">截止日期</text>
+            <view class="ddl" style="{{currentTeam.ddl=='请选择截止日期'?'':'color:#353535'}}">{{currentTeam.ddl}}</view>
+          <!-- </view> -->
+        </picker>
       </view>
       <view class="edit">
         <text class="label">微信号</text>
@@ -111,10 +119,14 @@
     }
 
     data = {
+      // status: 'newTeam' 'editTeam' 'editNotice'
       status: 'newTeam',
       title: '发布局',
       editStatus: '编辑局信息',
-      currentTeam: {},
+      now: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+      currentTeam: {
+        ddl: '请选择截止日期'
+      },
       currentNotice: ''
     }
 
@@ -122,11 +134,13 @@
 
     methods = {
       submit() {
-        console.log(this.notice)
-        this.methods.MODIFY_NOTICE({
-          notice: this.currentNotice
-        })
-        console.log(this.notice)
+        if (this.status === 'editNotice') {
+          console.log(this.notice)
+          this.methods.MODIFY_NOTICE({
+            notice: this.currentNotice
+          })
+          console.log(this.notice)
+        }
       },
       inputTeamInfo(detail, e) {
         this.currentTeam = {

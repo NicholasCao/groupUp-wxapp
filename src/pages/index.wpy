@@ -86,7 +86,7 @@
     </view>
     <view class="teams-box">
       <repeat for="{{teams}}" key="index" index="index" item="team">
-        <view class="teamInfo" @tap="showInfo">
+        <view class="teamInfo" @tap.stop="showInfo">
           <view class="teamName">
             {{team.name}}
           </view>

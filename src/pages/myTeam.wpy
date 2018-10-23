@@ -92,7 +92,7 @@
     </view>
     <view class="teams-box">
       <repeat for="{{myTeams}}" key="index" index="index" item="team">
-        <view class="teamInfo" wx:if="{{((team.status=='published'||team.status=='unpublished')&&tabIndex==1)||(team.status=='added'&&tabIndex==2)}}">
+        <view class="teamInfo" wx:if="{{((team.status=='published'||team.status=='unpublished')&&tabIndex==1)||(team.status=='added'&&tabIndex==2)}}" @tap.stop="showInfo">
           <view class="teamName">
             {{team.name}}
           </view>
@@ -102,9 +102,9 @@
               <view>已有人数<text>{{team.memberNumber+' 人'}}</text></view>
             </view>
             <view class="button-box">
-              <view class="purple-button" wx:if="{{team.status=='published'}}">撤销发布</view>
-              <view class="yellow-button" wx:if="{{team.status=='unpublished'}}">重新编辑</view>
-              <view class="purple-button" wx:if="{{team.status=='added'}}">退出此局</view>
+              <view class="purple-button" wx:if="{{team.status=='published'}}" @tap.stop="">撤销发布</view>
+              <view class="yellow-button" wx:if="{{team.status=='unpublished'}}" @tap.stop="reedit">重新编辑</view>
+              <view class="purple-button" wx:if="{{team.status=='added'}}" @tap.stop="eit">退出此局</view>
             </view>
           </view>
         </view>
@@ -177,6 +177,14 @@
     methods = {
       changeTab(index) {
         this.tabIndex = index
+      },
+      showInfo() {
+        wepy.navigateTo({
+          url: 'teamInfo'
+        })
+      },
+      reedit() {
+        console.log(1)
       }
     }
 

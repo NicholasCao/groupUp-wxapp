@@ -29,7 +29,7 @@ export default class extends wepy.app {
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: '组局',
       navigationBarTextStyle: 'black',
-      enablePullDownRefresh: true
+      enablePullDownRefresh: false
     },
     tabBar: {
       borderStyle: 'white',

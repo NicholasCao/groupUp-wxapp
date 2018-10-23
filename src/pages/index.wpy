@@ -124,7 +124,8 @@
     config = {
       navigationBarTitleText: '首页',
       navigationBarTextStyle: 'white',
-      navigationBarBackgroundColor: '#8998E5'
+      navigationBarBackgroundColor: '#8998E5',
+      enablePullDownRefresh: true
     }
 
     components = {

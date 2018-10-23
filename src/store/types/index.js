@@ -2,4 +2,6 @@ export const SET_HEIGHT = 'SET_HEIGHT'
 
 export const SET_STATUSBARHEIGHT = 'SET_STATUSBARHEIGHT'
 
+export const UPDATE_TEAMS = 'UPDATE_TEAMS'
+
 export const MODIFY_TEAM = 'MODIFY_TEAM'

@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { MODIFY_TEAM } from '../types'
+import { UPDATE_TEAMS, MODIFY_TEAM } from '../types'
 
 export default handleActions({
   [ MODIFY_TEAM ] (state,action) {
@@ -9,6 +9,7 @@ export default handleActions({
     }
   }
 }, {
+  teams: null,
   name: null,
   desc: null,
   ddl: null,

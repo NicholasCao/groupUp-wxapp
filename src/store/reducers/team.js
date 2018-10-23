@@ -1,13 +1,19 @@
 import { handleActions } from 'redux-actions'
-import { MODIFY_NOTICE } from '../types'
+import { MODIFY_TEAM } from '../types'
 
 export default handleActions({
-  [ MODIFY_NOTICE ] (state,action) {
+  [ MODIFY_TEAM ] (state,action) {
     return {
       ...state,
-      notice: action.payload.notice
+      ...action.payload
     }
   }
 }, {
+  name: null,
+  desc: null,
+  ddl: null,
+  maxMember: null,
+  currentMember: null,
+  members: null,
   notice: null
 })

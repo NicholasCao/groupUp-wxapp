@@ -105,12 +105,13 @@
   import { connect } from 'wepy-redux'
   import Header from '../components/header'
 
-  import { MODIFY_NOTICE } from '../store/types'
+  import { MODIFY_TEAM } from '../store/types'
 
   @connect({
+    team: state => state.team,
     notice: state => state.team.notice
   }, {
-    MODIFY_NOTICE
+    MODIFY_TEAM
   })
 
   export default class Index extends wepy.page {
@@ -136,10 +137,10 @@
       submit() {
         if (this.status === 'editNotice') {
           console.log(this.notice)
-          this.methods.MODIFY_NOTICE({
+          this.methods.MODIFY_TEAM({
             notice: this.currentNotice
           })
-          console.log(this.notice)
+          console.log(this.team)
         }
       },
       inputTeamInfo(detail, e) {
@@ -155,6 +156,7 @@
     }
 
     onLoad(option) {
+      console.log(this.team)
       // console.log(option.status)
       // console.log(option.status === 'notice')
       this.status = option.status

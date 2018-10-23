@@ -1,6 +1,5 @@
 <style lang="less">
   .editStatus-box{
-    margin: 142rpx 0 48rpx;
     padding: 10rpx 36rpx 26rpx 50rpx;
     border-bottom: 1rpx solid #DBDBDB;
     display: flex;
@@ -18,7 +17,7 @@
     }
   }
   .edit-box{
-    margin-top: 240rpx;
+    margin-top: 120rpx;
     padding: 0 52rpx;
     .edit{
       .label{
@@ -54,7 +53,6 @@
 </style>
 <template>
   <view>
-    <header :title.sync="title" backButton="true"></header>
     <view class="editStatus-box">
       <view class="editStatus">
         {{editStatus}}
@@ -103,7 +101,6 @@
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
-  import Header from '../components/header'
 
   import { MODIFY_TEAM } from '../store/types'
 
@@ -115,9 +112,10 @@
   })
 
   export default class Index extends wepy.page {
-    components = {
-      header: Header
+    config = {
+      navigationBarTitleText: '发布局'
     }
+    components = {}
 
     data = {
       // status: 'newTeam' 'editTeam' 'editNotice'
@@ -156,11 +154,13 @@
     }
 
     onLoad(option) {
-      console.log(this.team)
-      // console.log(option.status)
-      // console.log(option.status === 'notice')
+      // console.log(this.team)
       this.status = option.status
-      this.title = option.status === 'editNotice' ? '局公告' : '发布局'
+      if (option.status === 'editNotice') {
+        wx.setNavigationBarTitle({
+          title: '局公告'
+        })
+      }
       this.editStatus = option.status === 'editNotice' ? '编辑局公告' : '编辑局信息'
     }
   }

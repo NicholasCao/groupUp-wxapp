@@ -14,6 +14,7 @@
       font-size: 35rpx;
     }
     .tab-box{
+      padding-top: 30rpx;
       display: flex;
       justify-content: space-around;
       width: 750rpx;
@@ -28,7 +29,7 @@
     }
   }
   .teams-box{
-    margin-top: 260rpx;
+    margin-top: 120rpx;
     .teamInfo{
       padding: 35rpx 46rpx 18rpx 40rpx;
       margin: 20rpx;
@@ -80,9 +81,9 @@
 <template>
   <view>
     <view class="header">
-      <view class="title">
+      <!-- <view class="title">
         <text>我的局</text>
-      </view>
+      </view> -->
       <view class="tab-box">
         <text :class="{active:tabIndex==1}" @tap="changeTab(1)">发布的局</text>
         <text :class="{active:tabIndex==2}" @tap="changeTab(2)">加入的局</text>
@@ -136,6 +137,10 @@
 
   @connect({})
   export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的局'
+    }
+
     components = {}
 
     data = {

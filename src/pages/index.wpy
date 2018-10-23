@@ -1,6 +1,5 @@
 <style lang="less">
   .teams-box{
-    margin-top: 235rpx;
     .teamInfo{
       padding: 40rpx 46rpx 44rpx 40rpx;
       margin: 20rpx;
@@ -29,21 +28,20 @@
     }
   }
   .header{
-    background: #8998E5;
-    display: flex;
+    // background: #8998E5;
     flex-direction: column;
     align-items: center;
-    // margin-bottom: 40rpx;
-    box-shadow: 0 5rpx 10rpx rgba(74,80,111,0.1);
-    position: fixed;
-    top: 0;
+    box-shadow: 0 5rpx 10rpx rgba(74,80,111,0.2);
+    // position: fixed;
+    margin-bottom: 40rpx;
+    // top: 0;
     width: 750rpx;
-    .title{
-      color: #fff;
-      padding-top: 66rpx;
-      padding-bottom: 20rpx;
-      font-size: 35rpx;
-    }
+    // .title{
+    //   color: #fff;
+    //   padding-top: 66rpx;
+    //   padding-bottom: 20rpx;
+    //   font-size: 35rpx;
+    // }
     .search-box{
       padding: 13rpx 0 16rpx;
       background: linear-gradient(#8998E5, #9FA7E9);
@@ -79,9 +77,9 @@
   <view>
     <!-- <header :statusBarHeight.sync="statusBarHeight"/> -->
     <view class="header">
-      <view class="title">
+      <!-- <view class="title">
         <text>首页</text>
-      </view>
+      </view> -->
       <view class="search-box">
         <input placeholder="输入关键词搜索" placeholder-class="inputPlaceholder"/>
       </view>
@@ -123,6 +121,12 @@
     statusBarHeight: state => state.util.statusBarHeight
   })
   export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '首页',
+      navigationBarTextStyle: 'white',
+      navigationBarBackgroundColor: '#8998E5'
+    }
+
     components = {
       header: Header
     }
@@ -169,6 +173,11 @@
     }
 
     events = {}
+
+    async onPullDownRefresh() {
+      console.log(1)
+      wx.stopPullDownRefresh()
+    }
 
     onLoad() {
       // console.log(this.statusBarHeight)

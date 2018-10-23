@@ -24,11 +24,12 @@ export default class extends wepy.app {
       'pages/editTeam'
     ],
     window: {
-      navigationStyle: 'custom',
-      backgroundTextStyle: 'light',
+      navigationStyle: 'default',
+      backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarTitleText: '组局',
+      navigationBarTextStyle: 'black',
+      enablePullDownRefresh: true
     },
     tabBar: {
       borderStyle: 'white',

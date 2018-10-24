@@ -102,32 +102,14 @@
               <view>已有人数<text>{{team.memberNumber+' 人'}}</text></view>
             </view>
             <view class="button-box">
-              <view class="purple-button" wx:if="{{team.status=='published'}}" @tap.stop="">撤销发布</view>
+              <view class="purple-button" wx:if="{{team.status=='published'}}" @tap.stop="cancelPublish">撤销发布</view>
               <view class="yellow-button" wx:if="{{team.status=='unpublished'}}" @tap.stop="reedit">重新编辑</view>
-              <view class="purple-button" wx:if="{{team.status=='added'}}" @tap.stop="eit">退出此局</view>
+              <view class="purple-button" wx:if="{{team.status=='added'}}" @tap.stop="exit">退出此局</view>
             </view>
           </view>
         </view>
       </repeat>
     </view>
-    <!-- <view class="teams-box" wx:if="{{tabIndex==2}}">
-      <repeat for="{{myTeams}}" key="index" index="index" item="team">
-        <view class="teamInfo" wx:if="{{team.status=='added'}}">
-          <view class="teamName">
-            {{team.name}}
-          </view>
-          <view class="teamContent">
-            <view class="teamMember">
-              <view>目标人数<text>{{team.memberMaxNumber+' 人'}}</text></view>
-              <view>已有人数<text>{{team.memberNumber +' 人'}}</text></view>
-            </view>
-            <view class="button-box">
-              <view class="purple-button">退出此局</view>
-            </view>
-          </view>
-        </view>
-      </repeat>
-    </view> -->
   </view>
 </template>
 
@@ -185,6 +167,40 @@
       },
       reedit() {
         console.log(1)
+      },
+      cancelPublish() {
+        wx.showModal({
+          title: '提示',
+          content: '撤销发布不会删除现有成员，但会将此局从首页撤下。',
+          cancelText: '取消',
+          cancelColor: '#3CC51F',
+          confirmText: '确定',
+          confirmColor: '#666666',
+          success (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      },
+      exit() {
+        wx.showModal({
+          title: '提示',
+          content: '是否确定退出此局',
+          cancelText: '取消',
+          cancelColor: '#3CC51F',
+          confirmText: '确定',
+          confirmColor: '#666666',
+          success (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
       }
     }
 

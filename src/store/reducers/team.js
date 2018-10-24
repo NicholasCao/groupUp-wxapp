@@ -9,12 +9,12 @@ export default handleActions({
     }
   }
 }, {
-  teams: null,
-  name: null,
-  desc: null,
-  ddl: null,
-  maxMember: null,
-  currentMember: null,
-  members: null,
+  // teams: null,
+  // name: null,
+  // desc: null,
+  // ddl: null,
+  // maxMember: null,
+  // currentMember: null,
+  // members: null,
   notice: null
 })

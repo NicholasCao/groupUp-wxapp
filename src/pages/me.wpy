@@ -19,8 +19,13 @@
       .avater{
         width: 120rpx;
         height: 120rpx;
-        background: linear-gradient(#F2A5BD, #F8B5C7);
         border-radius: 50%;
+      }
+      .boy{
+        background: linear-gradient(#BAC5F2, #8796E9);
+      }
+      .girl{
+        background: linear-gradient(#F2A5BD, #F8B5C7);
       }
       .name{
         font-size: 30rpx;
@@ -64,7 +69,7 @@
     </view>
     <view class="myInfo">
       <view class="name-box">
-        <view class="avater">
+        <view class="avater {{sex}}">
         </view>
         <view class="name">
           Nicholas
@@ -76,7 +81,7 @@
       <view class="detail-box">
         <view class="detail">
           性别
-          <text>男</text>
+          <text>{{sex==='boy'?'男':'女'}}</text>
         </view>
         <view class="detail">
           学院
@@ -103,7 +108,9 @@
 
     components = {}
 
-    data = {}
+    data = {
+      sex: 'boy'
+    }
 
     computed = {}
 

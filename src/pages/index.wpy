@@ -81,7 +81,7 @@
         <text>首页</text>
       </view> -->
       <view class="search-box">
-        <input placeholder="输入关键词搜索" placeholder-class="inputPlaceholder"/>
+        <input placeholder="输入关键词搜索" placeholder-class="inputPlaceholder" bindinput="inputSearchInfo" bindconfirm="search"/>
       </view>
     </view>
     <view class="teams-box">
@@ -135,6 +135,7 @@
     mixins = [testMixin]
 
     data = {
+      searchInfo: '',
       teams: [{
         name: '云南八日游',
         desc: '研究生毕业，女。想一起去毕业旅行...',
@@ -155,7 +156,7 @@
         desc: '生活就像海淘拼单只有意志坚强的人...',
         memberNumber: 10,
         memberMaxNumber: 25
-      }, {}, {}, {}]
+      }]
     }
 
     computed = {}
@@ -170,6 +171,12 @@
         wepy.navigateTo({
           url: 'editTeam'
         })
+      },
+      inputSearchInfo(e) {
+        this.searchInfo = e.detail.value
+      },
+      search() {
+        console.log('searching' + this.searchInfo)
       }
     }
 

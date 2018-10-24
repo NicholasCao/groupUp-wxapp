@@ -5,5 +5,6 @@ import user from './user'
 
 export default combineReducers({
   util,
-  team
+  team,
+  user
 })

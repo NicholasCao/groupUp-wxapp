@@ -65,11 +65,11 @@
     <view class="edit-box" wx:if="{{status!='editNotice'}}">
       <view class="edit">
         <text class="label">标题</text>
-        <input placeholder="请输入标题" bindinput="inputTeamInfo(name)" placeholder-class="inputPlaceholder"/>
+        <input value="{{currentTeam.name}}" placeholder="请输入标题" bindinput="inputTeamInfo(name)" placeholder-class="inputPlaceholder"/>
       </view>
       <view class="edit">
         <text class="label">目标人数</text>
-        <input placeholder="请输入目标人数" bindinput="inputTeamInfo(maxMember)" placeholder-class="inputPlaceholder" type="number"/>
+        <input value="{{currentTeam.maxMember}}" placeholder="请输入目标人数" bindinput="inputTeamInfo(maxMember)" placeholder-class="inputPlaceholder" type="number"/>
       </view>
       <view class="edit">
         <!-- <text class="label">截止日期</text>
@@ -87,12 +87,12 @@
       </view>
       <view class="edit">
         <text class="label">简介</text>
-        <textarea placeholder="请输入简介" bindinput="inputTeamInfo(desc)" placeholder-class="inputPlaceholder"/>
+        <textarea value="{{currentTeam.desc}}" placeholder="请输入简介" bindinput="inputTeamInfo(desc)" placeholder-class="inputPlaceholder"/>
       </view>
     </view>
      <view class="edit-box" wx:if="{{status=='editNotice'}}">
       <view class="edit">
-        <textarea value="{{notice}}" bindinput="inputNotice" placeholder="请输入局公告" placeholder-class="inputPlaceholder"/>
+        <textarea value="{{currentTeam.notice}}" bindinput="inputNotice" placeholder="请输入局公告" placeholder-class="inputPlaceholder"/>
       </view>
     </view>
   </view>
@@ -102,13 +102,8 @@
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
 
-  import { MODIFY_TEAM } from '../store/types'
-
   @connect({
-    team: state => state.team,
     notice: state => state.team.notice
-  }, {
-    MODIFY_TEAM
   })
 
   export default class Index extends wepy.page {
@@ -134,11 +129,9 @@
     methods = {
       submit() {
         if (this.status === 'editNotice') {
-          console.log(this.notice)
-          this.methods.MODIFY_TEAM({
-            notice: this.currentNotice
-          })
-          console.log(this.team)
+          // console.log(this.notice)
+          // upload notice
+          // console.log(this.team)
         }
       },
       inputTeamInfo(detail, e) {
@@ -149,19 +142,41 @@
         console.log(this.currentTeam)
       },
       inputNotice(e) {
-        this.currentNotice = e.detail.value
+        this.currentTeam.notice = e.detail.value
       }
     }
 
     onLoad(option) {
       // console.log(this.team)
       this.status = option.status
+      this.editStatus = option.status === 'editNotice' ? '编辑局公告' : '编辑局信息'
       if (option.status === 'editNotice') {
-        wx.setNavigationBarTitle({
+        //  编辑局公告
+        wepy.setNavigationBarTitle({
           title: '局公告'
         })
+        this.currentTeam.notice = this.notice
+      } else if (option.status === 'editTeam') {
+        //  重新编辑
+        wepy.setNavigationBarTitle({
+          title: '编辑局'
+        })
+        this.loadTeam()
       }
-      this.editStatus = option.status === 'editNotice' ? '编辑局公告' : '编辑局信息'
+    }
+
+    /**
+     * 加载局信息
+     */
+    loadTeam() {
+      console.log('loading teamInfo')
+      //  request
+      this.currentTeam = {
+        name: '明天约球',
+        desc: '明天下午2点南体约球。',
+        ddl: '2018-11-11',
+        maxMember: '12'
+      }
     }
   }
 </script>

@@ -194,8 +194,11 @@
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
+  import { MODIFY_TEAM } from '../store/types'
 
-  @connect({})
+  @connect({}, {
+    MODIFY_TEAM
+  })
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '局信息'
@@ -232,12 +235,16 @@
         })
       },
       editNotice() {
+        this.methods.MODIFY_TEAM({
+          notice: this.team.notice
+        })
         wepy.navigateTo({
           url: 'editTeam?status=editNotice'
         })
       }
     }
 
-    onLoad() {}
+    onLoad() {
+    }
   }
 </script>

@@ -116,7 +116,7 @@
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
-
+  
   @connect({})
   export default class Index extends wepy.page {
     config = {
@@ -166,7 +166,9 @@
         })
       },
       reedit() {
-        console.log(1)
+        wepy.navigateTo({
+          url: 'editTeam?status=editTeam&id=id'
+        })
       },
       cancelPublish() {
         wx.showModal({

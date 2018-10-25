@@ -1,7 +1,7 @@
 <style lang="less">
   .background{
     position: absolute;
-    top: -108rpx; 
+    top: -98rpx; 
     right: -1rpx;
     z-index: 0;
   }

@@ -32,7 +32,7 @@ export default class extends wepy.app {
       enablePullDownRefresh: false
     },
     tabBar: {
-      borderStyle: 'white',
+      borderStyle: 'black',
       backgroundColor: '#FEFEFE',
       list: [{
         pagePath: 'pages/index',

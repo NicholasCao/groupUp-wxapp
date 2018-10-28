@@ -7,6 +7,8 @@
     position: fixed;
     top: 0;
     width: 100%;
+    background: #fff;
+    z-index: 100;
     .editStatus{
       font-size: 29rpx;
       color: #383838;
@@ -32,11 +34,13 @@
         width: 100%;
         margin-bottom: 25rpx;
       }
-       textarea{
+      textarea{
         color: #353535;
         font-size: 29rpx;
         padding: 20rpx 0 15rpx;
         width: 100%;
+        height: auto;
+        min-height: 250rpx;
       }
       .inputPlaceholder{
         color: #888;
@@ -47,6 +51,13 @@
         padding: 25rpx 0 25rpx;
         border-bottom: 2rpx solid #E5E5E5;
         margin-bottom: 25rpx;
+      }
+    }
+    .editImage{
+      margin-bottom: 80rpx;
+      image{
+        width: 120rpx;
+        height: 120rpx;
       }
     }
   }
@@ -87,10 +98,13 @@
       </view>
       <view class="edit">
         <text class="label">简介</text>
-        <textarea value="{{currentTeam.desc}}" placeholder="请输入简介" bindinput="inputTeamInfo(desc)" placeholder-class="inputPlaceholder"/>
+        <textarea value="{{currentTeam.desc}}" placeholder="请输入简介" bindinput="inputTeamInfo(desc)" placeholder-class="inputPlaceholder" auto-height="true"/>
+      </view>
+      <view class="editImage">
+        <image class="new" src="../assets/addImage.png"/>
       </view>
     </view>
-     <view class="edit-box" wx:if="{{status=='editNotice'}}">
+    <view class="edit-box" wx:if="{{status=='editNotice'}}">
       <view class="edit">
         <textarea value="{{currentTeam.notice}}" bindinput="inputNotice" placeholder="请输入局公告" placeholder-class="inputPlaceholder"/>
       </view>

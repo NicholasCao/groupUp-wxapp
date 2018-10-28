@@ -46,6 +46,15 @@
       padding: 13rpx 0 16rpx;
       background: linear-gradient(#8998E5, #9FA7E9);
       width: 750rpx;
+      display: flex;
+      align-items: center;
+        .search-icon{
+          width: 28rpx;
+          height: 28rpx;
+          position: absolute;
+          left: 55rpx;
+          z-index: 100;
+        }
         input{
           background: #ADB8F0;
           // linear-gradient(#ADB8F0,#9DAAEC);
@@ -81,6 +90,7 @@
         <text>首页</text>
       </view> -->
       <view class="search-box">
+        <image class="search-icon" src="../assets/searchIcon.png"/>
         <input placeholder="输入关键词搜索" placeholder-class="inputPlaceholder" bindinput="inputSearchInfo" bindconfirm="search"/>
       </view>
     </view>
